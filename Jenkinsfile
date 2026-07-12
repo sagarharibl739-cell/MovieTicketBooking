@@ -48,18 +48,13 @@ pipeline {
 
     post {
 
-        success {
-            echo 'Build Successful'
-            archiveArtifacts artifacts: 'build/**', fingerprint: true
-        }
-
-        failure {
-            echo 'Build Failed'
-        }
-
-        always {
-            echo 'Cleaning Workspace'
-            cleanWs()
-        }
+    success {
+        echo 'Build Successful'
+        archiveArtifacts artifacts: 'build/**/*', fingerprint: true
     }
+
+    failure {
+        echo 'Build Failed'
+    }
+  }
 }
